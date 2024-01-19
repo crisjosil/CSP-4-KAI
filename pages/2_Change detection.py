@@ -11,7 +11,7 @@ import ee
 st.set_page_config(layout="wide")
 st.title("Detecting temporal changes in Sentinel-2 imagery")
 
-original_title = '<p style="color:Black; font-size: 20px;">With minor tweaks, the code used for this app was adapted from the code associated with [this](https://www.mdpi.com/2072-4292/12/22/3694) research.</p>'
+original_title = '<p style="color:Black; font-size: 20px;">With minor tweaks, the code used for this app was adapted from the code associated with this paper https://www.mdpi.com/2072-4292/12/22/3694.</p>'
 st.markdown(original_title, unsafe_allow_html=True)
 st.info("Please enable/disable different layers using the icon in the top right of the map.")
 
@@ -118,12 +118,9 @@ Map.addLayer(fc.style(**{'color': 'ff0000', 'fillColor': '00000000'}), {}, 'Area
 
 Map.to_streamlit()
 
-st.markdown(
-    """
-    The following code snippet shows the python lines used to obtain an image collection of Sentinel-2 imagery over the desired AOI and dates. 
-    In this case, only images where cloud coverage is lower than 10% are considered. After masking clouds, a temporal median is applied to the image collection to reduce the stack of images. 
-"""
-)
+original_title = '<p style="color:Black; font-size: 20px;">The following code snippet shows the python lines used to obtain an image collection of Sentinel-2 imagery over the desired AOI and dates. In this case, only images where cloud coverage is lower than 10% are considered. After masking clouds, a temporal median is applied to the image collection to reduce the stack of images.</p>'
+st.markdown(original_title, unsafe_allow_html=True)
+
 
 code = '''col_earlier = (ee.ImageCollection('COPERNICUS/S2_SR')
   			.filterDate(date_advancing_earlier(startDate_earlier, delta_earlier, unit_earlier))
@@ -134,12 +131,8 @@ code = '''col_earlier = (ee.ImageCollection('COPERNICUS/S2_SR')
   			.clip(geometry))'''
 st.code(code, language='python')
 
-st.markdown(
-    """
-    A similar process is repeated to obtain the image collection of the second period of time. 
-    Then, the difference between the image collections is performed (RMSE) and a threshold is applied to this difference to obtain the change areas. The change areas are then displayed in black. As expected, agricultural fields dominate the changes while there seems to be changes affecting roads and the railway towards the south-east part of the area of interest (red circle).
-"""
-)
+original_title = '<p style="color:Black; font-size: 20px;">A similar process is repeated to obtain the image collection of the second period of time. Then, the difference between the image collections is performed (RMSE) and a threshold is applied to this difference to obtain the change areas. The change areas are then displayed in black. As expected, agricultural fields dominate the changes while there seems to be changes affecting roads and the railway towards the south-east part of the area of interest (red circle).</p>'
+st.markdown(original_title, unsafe_allow_html=True)
 
 code = '''def magnitude (image):
     	      return (image.pow(2).reduce('sum').sqrt())
