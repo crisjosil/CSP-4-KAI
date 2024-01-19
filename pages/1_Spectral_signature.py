@@ -5,9 +5,8 @@ import streamlit as st
 import geemap.foliumap as geemap
 import folium
 import ee
-ee.Authenticate()
-ee.Initialize()
-#import streamlit.components.v1 as components
+#ee.Authenticate()
+#ee.Initialize()
 
 st.set_page_config(layout="wide")
 st.title("Exploring Sentinel-2 band combinations")

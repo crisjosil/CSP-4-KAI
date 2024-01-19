@@ -1,5 +1,8 @@
 import streamlit as st
 import leafmap.foliumap as leafmap
+import os
+
+os.environ["EARTHENGINE_TOKEN"]==st.secrets["EARTHENGINE_TOKEN"]
 
 st.set_page_config(layout="wide")
 st.title("Hi Keen AI,")
