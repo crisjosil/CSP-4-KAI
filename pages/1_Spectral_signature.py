@@ -1,10 +1,11 @@
 import os
-import leafmap.foliumap as leafmap
-import leafmap.colormaps as cm
+#import leafmap.foliumap as leafmap
+#import leafmap.colormaps as cm
 import streamlit as st
 import geemap.foliumap as geemap
 import folium
 import ee
+ee.Authenticate()
 ee.Initialize()
 #import streamlit.components.v1 as components
 

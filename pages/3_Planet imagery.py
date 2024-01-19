@@ -4,7 +4,9 @@ import leafmap.colormaps as cm
 import streamlit as st
 import geemap.foliumap as geemap
 import folium
-
+import ee
+ee.Authenticate()
+ee.Initialize()
 st.set_page_config(layout="wide")
 st.title("Visualising cloud optimised Geotiff (COG) Planet imagery")
 
