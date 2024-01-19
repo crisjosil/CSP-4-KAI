@@ -6,8 +6,8 @@ import streamlit as st
 import geemap.foliumap as geemap
 import folium
 import ee
-ee.Authenticate()
-ee.Initialize()
+# ee.Authenticate()
+# ee.Initialize()
 st.set_page_config(layout="wide")
 st.title("Time series of an area of interest")
 

@@ -5,8 +5,8 @@ import streamlit as st
 import geemap.foliumap as geemap
 import folium
 import ee
-ee.Authenticate()
-ee.Initialize()
+#ee.Authenticate()
+#ee.Initialize()
 
 #// ------- Add ratio
 def addLogRatio(img):
