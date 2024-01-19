@@ -10,12 +10,8 @@ import ee
 st.set_page_config(layout="wide")
 st.title("Visualising cloud optimised Geotiff (COG) Planet imagery")
 
-st.markdown(
-    """
-    This page loads COG planet imagery stored in a google cloud bucket. The dates cover from January to December 2020. The bands used are described in the following link (4-band product): https://developers.planet.com/docs/apis/data/sensors/
-
-    """
-)
+original_title = '<p style="color:Black; font-size: 20px;">This page loads COG planet imagery stored in a google cloud bucket. The dates cover from January to December 2020. The bands used are described in the following link (4-band product): https://developers.planet.com/docs/apis/data/sensors/.</p>'
+st.markdown(original_title, unsafe_allow_html=True)
 
 st.info("Loading the files may take a minute. Please enable/disable different dates using the icon in the top right of the map.")
 

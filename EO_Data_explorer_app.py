@@ -27,10 +27,20 @@ st.markdown(
 
 row1_col1, row1_col2 = st.columns(2)
 with row1_col1:
+    original_title = '<p style="color:Black; font-size: 20px;">Sentinel-2 false color</p>'
+    st.markdown(original_title, unsafe_allow_html=True)
     st.image("https://github.com/crisjosil/CSP-4-KAI/raw/master/GIFs/sentinel2.gif")
+    
+    original_title = '<p style="color:Black; font-size: 20px;">Larger area Sentinel-2 false color</p>'
+    st.markdown(original_title, unsafe_allow_html=True)
     st.image("https://github.com/crisjosil/CSP-4-KAI/raw/master/GIFs/Sentinel-2_L2A-larger-timelapse.gif")
 
 with row1_col2:
+    original_title = '<p style="color:Black; font-size: 20px;">Sentinel-1 VV polarisation</p>'
+    st.markdown(original_title, unsafe_allow_html=True)
     st.image("https://github.com/crisjosil/CSP-4-KAI/raw/master/GIFs/sentinel1_VV.gif")
+    
+    original_title = '<p style="color:Black; font-size: 20px;">Sentinel-2 zoomed in  </p>'
+    st.markdown(original_title, unsafe_allow_html=True)
     st.image("https://github.com/crisjosil/CSP-4-KAI/raw/master/GIFs/Sentinel-2_L2A-roads_rail-timelapse.gif")
 

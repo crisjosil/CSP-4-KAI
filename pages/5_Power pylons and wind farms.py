@@ -9,7 +9,9 @@ import ee
 # ee.Initialize()
 st.set_page_config(layout="wide")
 st.title("Detecting power pylons from Sentinel-1 imagery")
-st.subheader("SAR backscattering from sand is dominated by single bounce scattering and backscattering from power pylons is dominated by double bounce and volume scattering. We can use this knowledge and employ algorithms that highlight double bounce and volume scattering to try to identify man made structures, and in particular for this case, power pylons. The algorithm below was originally designed to identify ships in the sea where the backscattering conditions are similar to those present here (metal structure over a flat surface)")
+
+original_title = '<p style="color:Black; font-size: 20px;">SAR backscattering from sand is dominated by single bounce scattering and backscattering from power pylons is dominated by double bounce and volume scattering. We can use this knowledge and employ algorithms that highlight double bounce and volume scattering to try to identify man made structures, and in particular for this case, power pylons. The algorithm below was originally designed to identify ships in the sea where the backscattering conditions are similar to those present here (metal structure over a flat surface).</p>'
+st.markdown(original_title, unsafe_allow_html=True)
 
 st.info("Please note that the results of the algorithm update dynamically at different zoom levels. This due to the way that map tiles are rendered in web applications.")
 

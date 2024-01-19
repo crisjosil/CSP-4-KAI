@@ -11,6 +11,9 @@ import ee
 st.set_page_config(layout="wide")
 st.title("Detecting temporal changes in Sentinel-2 imagery")
 
+original_title = '<p style="color:Black; font-size: 20px;">With minor tweaks, the code used for this app was adapted from the code associated with [this](https://www.mdpi.com/2072-4292/12/22/3694) research.</p>'
+st.markdown(original_title, unsafe_allow_html=True)
+st.info("Please enable/disable different layers using the icon in the top right of the map.")
 
 Map = geemap.Map(center=[27.029,42.788], zoom=13)
 Map.add_basemap('HYBRID')
@@ -134,7 +137,7 @@ st.code(code, language='python')
 st.markdown(
     """
     A similar process is repeated to obtain the image collection of the second period of time. 
-    Then, the difference between the image collections is performed (RMSE) and a threshold is applied to this difference to obtain the change areas.
+    Then, the difference between the image collections is performed (RMSE) and a threshold is applied to this difference to obtain the change areas. The change areas are then displayed in black. As expected, agricultural fields dominate the changes while there seems to be changes affecting roads and the railway towards the south-east part of the area of interest (red circle).
 """
 )
 
