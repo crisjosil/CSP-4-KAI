@@ -1,5 +1,6 @@
 import streamlit as st
 import leafmap.foliumap as leafmap
+import geemap.foliumap as geemap
 import os
 
 os.environ["EARTHENGINE_TOKEN"]=st.secrets["EARTHENGINE_TOKEN"]
