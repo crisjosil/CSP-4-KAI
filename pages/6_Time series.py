@@ -6,7 +6,6 @@ import streamlit as st
 import geemap.foliumap as geemap
 import folium
 import ee
-import geopandas as gpd
 import json
 from datetime import datetime
 import numpy as np
