@@ -6,8 +6,6 @@ import streamlit as st
 import geemap.foliumap as geemap
 import folium
 import ee
-import rasterio
-import xarray
 import geopandas as gpd
 import json
 from datetime import datetime
