@@ -18,7 +18,7 @@ st.markdown(
 st.info("Loading the files may take a minute. Please enable/disable different dates using the icon in the top right of the map.")
 
 urla = 'https://storage.googleapis.com/cogs-2024/KAI-9Jan2020_psscene_analytic_sr_udm2/composite_file_format.tif'
-urlb = 'https://storage.googleapis.com/cogs-2024/KAI-14Feb2020_psscene_analytic_sr_udm2/composite.tif'
+urlb = 'https://storage.googleapis.com/cogs-2024/KAI-14Feb2020a_psscene_analytic_sr_udm2/composite_file_format.tif'
 urlc = 'https://storage.googleapis.com/cogs-2024/KAI-18Mar2020_psscene_analytic_sr_udm2/composite_file_format.tif'
 urlda = 'https://storage.googleapis.com/cogs-2024/KAI-9Apr2020_psscene_analytic_sr_udm2/composite_file_format.tif'
 urldb = 'https://storage.googleapis.com/cogs-2024/KAI-13Apr2020_psscene_analytic_sr_udm2/composite_file_format.tif'
@@ -44,10 +44,20 @@ with col1:
     Map = leafmap.Map()
     Map.add_basemap('HYBRID')
     Map.add_cog_layer(urla,bidx=[3, 2, 1], rescale=["0,3000","0,3000","0,3000"],name ='09-Jan-2020') # R,G,B
-    Map.add_cog_layer(urlb,bidx=[3, 2, 1], rescale=["0,3000","0,3000","0,3000"],name ='14-Feb-2020') # -  The False color infrared composite  It is most commonly used to assess plant density and healht
+    Map.add_cog_layer(urlb,bidx=[3, 2, 1], rescale=["0,3000","0,3000","0,3000"],name ='14-Feb-2020') # 
     Map.add_cog_layer(urlc,bidx=[3, 2, 1], rescale=["0,3000","0,3000","0,3000"],name ='18-Mar-2020')    
-    Map.add_cog_layer(urld,bidx=[3, 2, 1], rescale=["0,3000","0,3000","0,3000"],name ='13-Apr-2020')
+    Map.add_cog_layer(urlda,bidx=[3, 2, 1], rescale=["0,3000","0,3000","0,3000"],name ='09-Apr-2020')
+    Map.add_cog_layer(urldb,bidx=[3, 2, 1], rescale=["0,3000","0,3000","0,3000"],name ='13-Apr-2020')
     Map.add_cog_layer(urle,bidx=[3, 2, 1], rescale=["0,3000","0,3000","0,3000"],name ='03-May-2020')
+    Map.add_cog_layer(urlf,bidx=[3, 2, 1], rescale=["0,3000","0,3000","0,3000"],name ='07-Jun-2020')
+    Map.add_cog_layer(urlg,bidx=[3, 2, 1], rescale=["0,3000","0,3000","0,3000"],name ='30-Jun-2020')
+    Map.add_cog_layer(urlh,bidx=[3, 2, 1], rescale=["0,3000","0,3000","0,3000"],name ='02-Jul-2020')
+    Map.add_cog_layer(urli,bidx=[3, 2, 1], rescale=["0,3000","0,3000","0,3000"],name ='23-Aug-2020')
+    Map.add_cog_layer(urlj,bidx=[3, 2, 1], rescale=["0,3000","0,3000","0,3000"],name ='30-Aug-2020')
+    Map.add_cog_layer(urlk,bidx=[3, 2, 1], rescale=["0,3000","0,3000","0,3000"],name ='25-Oct-2020')
+    Map.add_cog_layer(urll,bidx=[3, 2, 1], rescale=["0,3000","0,3000","0,3000"],name ='25-Nov-2020')
+    Map.add_cog_layer(urlm,bidx=[3, 2, 1], rescale=["0,3000","0,3000","0,3000"],name ='06-Dec-2020')
+    Map.add_cog_layer(urln,bidx=[3, 2, 1], rescale=["0,3000","0,3000","0,3000"],name ='16-Dec-2020')
     in_geojson = 'https://github.com/crisjosil/CSP-4-KAI/blob/master/AOI_5km_buffer.geojson'
     fc = geemap.geojson_to_ee(in_geojson)
     Map.add_geojson(in_geojson, layer_name="AOI")
@@ -59,10 +69,20 @@ with col2:
     Map = leafmap.Map()
     Map.add_basemap('HYBRID')
     Map.add_cog_layer(urla,bidx=[4, 3, 2], rescale=["0,4000","0,4000","0,4000"],name ='09-Jan-2020') # 
-    Map.add_cog_layer(urlb,bidx=[4, 3, 2], rescale=["0,4000","0,4000","0,4000"],name ='14-Feb-2020') # NIR,R,G -  The False color infrared composite  It is most commonly used to assess plant density and healht
+    Map.add_cog_layer(urlb,bidx=[4, 3, 2], rescale=["0,4000","0,4000","0,4000"],name ='14-Feb-2020') # NIR,R,G,False color infrared composite, commonly used to assess plant density and healht
     Map.add_cog_layer(urlc,bidx=[4, 3, 2], rescale=["0,4000","0,4000","0,4000"],name ='18-Mar-2020')    
-    Map.add_cog_layer(urld,bidx=[4, 3, 2], rescale=["0,4000","0,4000","0,4000"],name ='13-Apr-2020')  
-    Map.add_cog_layer(urle,bidx=[4, 3, 2], rescale=["0,4000","0,4000","0,4000"],name ='03-May-2020')    
+    Map.add_cog_layer(urlda,bidx=[4, 3, 2], rescale=["0,4000","0,4000","0,4000"],name ='09-Apr-2020')  
+    Map.add_cog_layer(urldb,bidx=[4, 3, 2], rescale=["0,4000","0,4000","0,4000"],name ='13-Apr-2020')  
+    Map.add_cog_layer(urle,bidx=[4, 3, 2], rescale=["0,4000","0,4000","0,4000"],name ='03-May-2020')  
+    Map.add_cog_layer(urlf,bidx=[4, 3, 2], rescale=["0,4000","0,4000","0,4000"],name ='07-Jun-2020')  
+    Map.add_cog_layer(urlg,bidx=[4, 3, 2], rescale=["0,4000","0,4000","0,4000"],name ='30-Jun-2020')  
+    Map.add_cog_layer(urlh,bidx=[4, 3, 2], rescale=["0,4000","0,4000","0,4000"],name ='02-Jul-2020')  
+    Map.add_cog_layer(urli,bidx=[4, 3, 2], rescale=["0,4000","0,4000","0,4000"],name ='23-Aug-2020')  
+    Map.add_cog_layer(urlj,bidx=[4, 3, 2], rescale=["0,4000","0,4000","0,4000"],name ='30-Aug-2020')  
+    Map.add_cog_layer(urlk,bidx=[4, 3, 2], rescale=["0,4000","0,4000","0,4000"],name ='25-Oct-2020')  
+    Map.add_cog_layer(urll,bidx=[4, 3, 2], rescale=["0,4000","0,4000","0,4000"],name ='25-Nov-2020')  
+    Map.add_cog_layer(urlm,bidx=[4, 3, 2], rescale=["0,4000","0,4000","0,4000"],name ='06-Dec-2020')  
+    Map.add_cog_layer(urln,bidx=[4, 3, 2], rescale=["0,4000","0,4000","0,4000"],name ='16-Dec-2020')    
     in_geojson = 'https://github.com/crisjosil/CSP-4-KAI/blob/master/AOI_5km_buffer.geojson'
     fc = geemap.geojson_to_ee(in_geojson)
     Map.add_geojson(in_geojson, layer_name="AOI")

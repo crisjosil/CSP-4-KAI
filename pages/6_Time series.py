@@ -7,6 +7,18 @@ import geemap.foliumap as geemap
 import folium
 import ee
 
+st.set_page_config(layout="wide")
+st.title("Time series of an area of interest")
+
+st.markdown(
+    """
+    This page shows a time series of Sentinel-1 imagery for a specific location. It will eventually be a dynamic dashboard which allows a user to define an AOI and a satellite, and retrieve the time series from the Earth engine.
+
+    """
+)
+
+st.info("Development of this page is in progress")
+
 # Sentinel-1
 
 date1 = ee.Date('2015-01-01')
@@ -61,62 +73,62 @@ st.pyplot(fig)
 ####
 
 #Function to remove cloud and snow pixels
-def maskCloudAndShadows(image):
-    cloudProb = image.select('MSK_CLDPRB');
-    snowProb = image.select('MSK_SNWPRB');
-    cloud = cloudProb.lt(5);
-    snow = snowProb.lt(5);
-    scl = image.select('SCL'); 
-    shadow = scl.eq(3) # // 3 = cloud shadow
-    cirrus = scl.eq(10) # // 10 = cirrus
-    #Cloud probability less than 5% or cloud shadow classification
-    mask = (cloud.And(snow)).And(cirrus.neq(1)).And(shadow.neq(1));
-    return (image.updateMask(mask))
+# def maskCloudAndShadows(image):
+#     cloudProb = image.select('MSK_CLDPRB');
+#     snowProb = image.select('MSK_SNWPRB');
+#     cloud = cloudProb.lt(5);
+#     snow = snowProb.lt(5);
+#     scl = image.select('SCL'); 
+#     shadow = scl.eq(3) # // 3 = cloud shadow
+#     cirrus = scl.eq(10) # // 10 = cirrus
+#     #Cloud probability less than 5% or cloud shadow classification
+#     mask = (cloud.And(snow)).And(cirrus.neq(1)).And(shadow.neq(1));
+#     return (image.updateMask(mask))
 
 
-# Adding a NDVI band
-def addNDVI(image):
-    ndvi = image.normalizedDifference(['B8', 'B4']).rename('ndvi')
-    return (image.addBands([ndvi]))
+# # Adding a NDVI band
+# def addNDVI(image):
+#     ndvi = image.normalizedDifference(['B8', 'B4']).rename('ndvi')
+#     return (image.addBands([ndvi]))
 
-# Adding a modified sand index
-def addSand(image): 
-    sand = image.normalizedDifference(['B4', 'B2']).rename('sand_index')
-    return (image.addBands([sand]))
+# # Adding a modified sand index
+# def addSand(image): 
+#     sand = image.normalizedDifference(['B4', 'B2']).rename('sand_index')
+#     return (image.addBands([sand]))
 
-# Adding NDWI index
-def addNDWI(image):
-    mndwi = image.normalizedDifference(['B3', 'B11']).rename(['mndwi']);
-    return (image.addBands([mndwi]))
+# # Adding NDWI index
+# def addNDWI(image):
+#     mndwi = image.normalizedDifference(['B3', 'B11']).rename(['mndwi']);
+#     return (image.addBands([mndwi]))
 
-startDate = '2018-01-01'
-endDate = '2021-12-31'
-# Use Sentinel-2 L2A data - which has better cloud masking
+# startDate = '2018-01-01'
+# endDate = '2021-12-31'
+# # Use Sentinel-2 L2A data - which has better cloud masking
 
-#//var point = ee.Geometry.Point([42.8284913628064, 27.006930467249838]);
+# #//var point = ee.Geometry.Point([42.8284913628064, 27.006930467249838]);
 
 
-S2_collection = (ee.ImageCollection('COPERNICUS/S2_SR')
-    .filterDate(startDate, endDate)
-    .map(maskCloudAndShadows)
-    .map(addNDVI)
-    #.map(addSand)
-    #.map(addNDWI)
-    .filter(ee.Filter.bounds(AOI))
-)
+# S2_collection = (ee.ImageCollection('COPERNICUS/S2_SR')
+#     .filterDate(startDate, endDate)
+#     .map(maskCloudAndShadows)
+#     .map(addNDVI)
+#     #.map(addSand)
+#     #.map(addNDWI)
+#     .filter(ee.Filter.bounds(AOI))
+# )
 
-ds2 = geemap.ee_to_xarray(S2_collection, crs='EPSG:3857',scale=10,geometry=AOI)
+# ds2 = geemap.ee_to_xarray(S2_collection, crs='EPSG:3857',scale=10,geometry=AOI)
 
-lat_,lon_ = 27.066248937837237, 42.777011429493655
+# lat_,lon_ = 27.066248937837237, 42.777011429493655
 
-sample_point = ds2.ndvi.sel(Y=lat_, X=lon_, method='nearest')
+# sample_point = ds2.ndvi.sel(Y=lat_, X=lon_, method='nearest')
 
-fig = plt.figure(figsize = (19, 10))
-plt.scatter(sample_point.time.values, sample_point.values, color = 'k')
-plt.plot(sample_point.time.values, sample_point.values, color = 'k')
-plt.grid(True)
-plt.xlabel('Date')
-plt.ylabel('VV (dB)')
-plt.title('Backscatter at lat,lon')
+# fig = plt.figure(figsize = (19, 10))
+# plt.scatter(sample_point.time.values, sample_point.values, color = 'k')
+# plt.plot(sample_point.time.values, sample_point.values, color = 'k')
+# plt.grid(True)
+# plt.xlabel('Date')
+# plt.ylabel('VV (dB)')
+# plt.title('Backscatter at lat,lon')
 
-st.pyplot(fig)
+# st.pyplot(fig)
